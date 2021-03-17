@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Majestic Admin</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{{url_for('static',filename='vendors/mdi/css/materialdesignicons.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='vendors/base/vendor.bundle.base.css')}}">
+  <!-- endinject -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{{url_for('static',filename='img/favicon.png')}}" />
+</head>
+
+<body onload="loadFilesInfo()">
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="navbar-brand-wrapper d-flex justify-content-center">
+        <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">  
+          <a class="navbar-brand brand-logo" href="../../index.html"><img src="{{url_for('static',filename='img/logo.svg')}}" alt="logo"/></a>
+          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="{{url_for('static',filename='img/logo-mini.svg')}}" alt="logo"/></a>
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-sort-variant"></span>
+          </button>
+        </div>  
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <ul class="navbar-nav mr-lg-4 w-100">
+          <li class="nav-item nav-search d-none d-lg-block w-100">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="search">
+                  <i class="mdi mdi-magnify"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" placeholder="Search now" aria-label="search" aria-describedby="search">
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown mr-1">
+            <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
+              <i class="mdi mdi-message-text mx-0"></i>
+              <span class="count"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="messageDropdown">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
+              <a class="dropdown-item">
+                <div class="item-thumbnail">
+                    <img src="{{url_for('static',filename='img/faces/face4.jpg')}}" alt="image" class="profile-pic">
+                </div>
+                <div class="item-content flex-grow">
+                  <h6 class="ellipsis font-weight-normal">David Grey
+                  </h6>
+                  <p class="font-weight-light small-text text-muted mb-0">
+                    The meeting is cancelled
+                  </p>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="item-thumbnail">
+                    <img src="{{url_for('static',filename='img/faces/face2.jpg')}}" alt="image" class="profile-pic">
+                </div>
+                <div class="item-content flex-grow">
+                  <h6 class="ellipsis font-weight-normal">Tim Cook
+                  </h6>
+                  <p class="font-weight-light small-text text-muted mb-0">
+                    New product launch
+                  </p>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="item-thumbnail">
+                    <img src="{{url_for('static',filename='img/faces/face3.jpg')}}" alt="image" class="profile-pic">
+                </div>
+                <div class="item-content flex-grow">
+                  <h6 class="ellipsis font-weight-normal"> Johnson
+                  </h6>
+                  <p class="font-weight-light small-text text-muted mb-0">
+                    Upcoming board meeting
+                  </p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class="nav-item dropdown mr-4">
+            <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center notification-dropdown" id="notificationDropdown" href="#" data-toggle="dropdown">
+              <i class="mdi mdi-bell mx-0"></i>
+              <span class="count"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="notificationDropdown">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+              <a class="dropdown-item">
+                <div class="item-thumbnail">
+                  <div class="item-icon bg-success">
+                    <i class="mdi mdi-information mx-0"></i>
+                  </div>
+                </div>
+                <div class="item-content">
+                  <h6 class="font-weight-normal">Application Error</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+                    Just now
+                  </p>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="item-thumbnail">
+                  <div class="item-icon bg-warning">
+                    <i class="mdi mdi-settings mx-0"></i>
+                  </div>
+                </div>
+                <div class="item-content">
+                  <h6 class="font-weight-normal">Settings</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+                    Private message
+                  </p>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="item-thumbnail">
+                  <div class="item-icon bg-info">
+                    <i class="mdi mdi-account-box mx-0"></i>
+                  </div>
+                </div>
+                <div class="item-content">
+                  <h6 class="font-weight-normal">New user registration</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+                    2 days ago
+                  </p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <img src="{{url_for('static',filename='img/faces/face5.jpg')}}" alt="profile"/>
+              <span class="nav-profile-name">Louis Barnett</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item">
+                <i class="mdi mdi-settings text-primary"></i>
+                Settings
+              </a>
+              <a class="dropdown-item">
+                <i class="mdi mdi-logout text-primary"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('showRules')}}">
+              <i class="mdi mdi-home menu-icon"></i>
+              <span class="menu-title">Rules</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="mdi mdi-circle-outline menu-icon"></i>
+              <span class="menu-title">UI Elements</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('uploadFile')}}">
+              <i class="mdi mdi-view-headline menu-icon"></i>
+              <span class="menu-title">file management</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <i class="mdi mdi-account menu-icon"></i>
+              <span class="menu-title">User Pages</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login-2.html"> Login 2 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register-2.html"> Register 2 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/samples/lock-screen.html"> Lockscreen </a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <!-- <div class="col-md-12 grid-margin stretch-card"> -->
+                <form action="{{url_for('uploadFile')}}" class="col-md-12 grid-margin stretch-card" enctype='multipart/form-data' method='POST' runat="server">
+                  <input type="text" id="curFile" class="form-control col-md-6" ?nkeyd?wn="return false;" ?npaste="return false;" placeholder="Select file...">
+                  <label class="input-group-btn col-md-2" style="margin-left: 10px">
+                      <span class="btn btn-primary">
+                        <i class="glyphicon glyphicon-folder-open"></i>choose files
+                        <input id="file" type="file" name="file" style="display: none;" onchange="freshDefault();" multiple>
+                      </span>
+                  </label>
+                  <label class="input-group-btn col-md-2">
+                    <span class="btn btn-primary" >
+                      <i class="glyphicon glyphicon-folder-open"></i>
+                      upload
+                      <input type="submit" style="display: none;" multiple>
+                    </span>
+                  </label>
+                </form>
+              <!-- </div> -->
+          </div>
+          <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">file contents</h4>
+                  <div class="table-responsive pt-3">
+                    <table class="table table-bordered" id='filesTB'>
+                      <thead>
+                        <tr>
+                          <th>
+                            #
+                          </th>
+                          <th>
+                            filename
+                          </th>
+                          <th>
+                            size(MB)
+                          </th>
+                          <th>
+                            upload time
+                          </th>
+                          <th>
+                            delete
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="{{url_for('static',filename='vendors/base/vendor.bundle.base.js')}}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="{{url_for('static',filename='js/off-canvas.js')}}"></script>
+  <script src="{{url_for('static',filename='js/hoverable-collapse.js')}}"></script>
+  <script src="{{url_for('static',filename='js/template.js')}}"></script>
+  <script src="{{url_for('static',filename='js/jquery.js') }}"></script>
+  <script src="{{url_for('static',filename='js/index.js') }}"></script>
+  <script src="{{url_for('static',filename='js/func.js') }}"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <!-- End custom js for this page-->
+</body>
+
+</html>
+<script type="text/javascript">
+  function loadFilesInfo(){
+    var httpRequest = new XMLHttpRequest();//???????????
+    httpRequest.open('POST', '/searchFiles', true); //????????
+    httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");//????? ??post??????????????????????
+    httpRequest.send('');//use file path as parameter
+    /**
+     * ??????????
+     */
+    httpRequest.onreadystatechange = function () {//??????????????????????????
+        if (httpRequest.readyState == 4 && httpRequest.status == 200) {//??????????
+            var json = JSON.parse(httpRequest.responseText);//???????????
+            // console.log(json);
+            for(var idx in json){
+                addRow(json[idx][0],json[idx][1]+'M',json[idx][2],json[idx][3]);
+            }
+            
+        }
+    };
+  };
+  function addRow(idx,...info){
+    var result="";
+    result +="<tr>";
+    result +="<td style='text-align: left;'>"+idx+"</td>";
+    for (let item of info){
+      result +="<td style='text-align: left;'>"+item+"</td>";
+    }
+    result +="<td><a href='#'><button class='btn btn-info' onclick='removeFile(this)'>delete</button></a></td>";
+    result +="</tr>";
+    $("#filesTB tbody").append(result);
+  };
+  //????file
+  function removeFile(obj){
+      clearTB("filesTB");
+      fileID = obj.parentNode.parentNode.parentNode.cells[0].textContent;
+      var httpRequest = new XMLHttpRequest();//???????????
+      httpRequest.open('POST', '/removeFile', true); //????????
+      httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");//????? ??post??????????????????????
+      httpRequest.send('fileID='+fileID);//???? ??????send?
+      /**
+       * ??????????
+       */
+      httpRequest.onreadystatechange = function () {//??????????????????????????
+          if (httpRequest.readyState == 4 && httpRequest.status == 200) {//??????????
+              console.log(httpRequest.responseText);
+              var json = JSON.parse(httpRequest.responseText);//???????????
+              console.log(json);
+              for(var idx in json){
+                  addRow(json[idx][0],json[idx][1],json[idx][2],json[idx][3]);
+              }
+              
+          }
+      };
+      alert("delete successfully!");
+  };
+  //??table
+  function clearTB(id){ 
+        tableObj = document.getElementById(id);
+        rowcount = tableObj.rows.length;
+        for(i=rowcount  - 1;i > 0; i--){
+           tableObj.deleteRow(i);
+        }
+    };
+</script>

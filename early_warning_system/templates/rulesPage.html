@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <script src="{{url_for('static',filename='js/jquery.js') }}"></script>
+    <script src="{{url_for('static',filename='js/index.js') }}"></script>
+    <script src="{{url_for('static',filename='js/func.js') }}"></script>
+    <title>Apriori规则生成</title>
+
+</head>
+<body onload="loadRules();">
+<nav class="navbar navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">Apriori预警规则生成</span>
+    <button class="btn btn-outline-light my-2 my-sm-0" id="reset" onclick="clearTB()" type="refresh">RESET</button>
+</nav>
+<!-- <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">商品推荐系统</h1>
+        <p class="lead">基于多决策算法自动给出推荐结果</p>
+    </div>
+</div> -->
+<div class="container" style="margin-top: 30px">
+    <div class="row">
+        <div class="col-lg-8 col-sm-6 col-12">
+            <div class="input-group">
+                <input type="text" id="curFile" class="form-control" οnkeydοwn="return false;" οnpaste="return false;" placeholder="Select file...">
+                <label class="input-group-btn" style="margin-left: 10px">
+                    <span class="btn btn-primary">
+                        <i class="glyphicon glyphicon-folder-open"></i>  
+                        选择文件
+                        <input id="file" type="file" style="display: none;" onchange="freshDefault()" multiple>
+                    </span>
+                </label>
+                <button type="button" class="btn btn-primary" onclick="readCsv();" style="width: 10em;margin-left: 20px">查询</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="padding-top:2em;margin-top: 20px">
+
+    <!-- <form class="form-inline">
+      <button type="button" class="btn btn-info" onclick="readCsv();" style="width: 10em">查询</button>
+    </form> -->
+    <div class="table-responsive">
+  <table class="table" id="rulesTB" >
+    <!-- On cells (`td` or `th`) -->
+    <tr>
+      <td class="active" style="text-align: center;">前件</td>
+      <td class="active" style="text-align: center;">后件</td>
+      <td class="success" style="text-align: center;">置信度</td>
+    </tr>
+  </table>
+</div>
+</div>
+</body>
+</html>
